@@ -1,5 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router'
+import { DefaultState, Default Ctrl } from './default'
+import { GridServiceName, GridState, GridCtrl, GridService } from './grid'
 
 import '../style/app.css';
 
@@ -21,6 +23,16 @@ const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, [])
   .directive('app', app)
-  .controller('AppCtrl', AppCtrl);
+  .controller('DefaultCtrl', DefaultCtrl);
+  .controller('GridCtrl', GridCtrl);
+  .service(GridServiceName, GridService)
+  .config(($stateProvider) => {
+    $stateProvider
+       .state(DefaultState.name, DefaultState)
+       .state(GridState.name, GridState)
+  })
+  .run(($state) => {
+    $state.go('default')
+  })
 
 export default MODULE_NAME;
