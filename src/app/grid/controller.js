@@ -1,22 +1,19 @@
 export const GridCtrl = ['$scope', 'grid', class GridCtrl {
   constructor ($scope, GridService) {
     $scope.posts = []
-    this.title = 'Grid Photos'
+    this.title = 'Aww Title from the Controller'
     GridService.getPosts()
       .then(({
         status,
-        data: {
-          images: {
-            thumbnail
-          }
-        }
+        data
       }) => {
+        console.log(data, 'data')
         if (status !== 200) {
-          $scope.error = `Error fetching from Instagram\nStatus: ${status}`
+          $scope.error = `Error fetching /r/aww.json\nStatus: ${status}`
         }
-        $scope.posts = children
-          .filter(child => child.data.images)
-          .map(child => child.data)
+        $scope.posts = data
+          .filter(child => child.images)
+          // .map(child => child.data)
       })
   }
 }]

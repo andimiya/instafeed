@@ -1,6 +1,4 @@
-import TOKEN from '../.env'
-
-export const GridServiceName = 'aww'
+export const GridServiceName = 'grid'
 export const GridService = [
   '$http',
   class GridService {
