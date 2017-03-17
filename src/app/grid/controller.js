@@ -1,4 +1,4 @@
-export const AwwCtrl = ['$scope', 'grid', class GridCtrl {
+export const GridCtrl = ['$scope', 'grid', class GridCtrl {
   constructor ($scope, GridService) {
     $scope.posts = []
     this.title = 'Grid Photos'
