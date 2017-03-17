@@ -1,21 +1,21 @@
-export const AwwCtrl = ['$scope', 'aww', class AwwCtrl {
-  constructor ($scope, AwwService) {
+export const AwwCtrl = ['$scope', 'grid', class GridCtrl {
+  constructor ($scope, GridService) {
     $scope.posts = []
-    this.title = 'Aww Photos'
-    AwwService.getPosts()
+    this.title = 'Grid Photos'
+    GridService.getPosts()
       .then(({
         status,
         data: {
-          data: {
-            children
+          images: {
+            thumbnail
           }
         }
       }) => {
         if (status !== 200) {
-          $scope.error = `Error fetching /r/aww.json\nStatus: ${status}`
+          $scope.error = `Error fetching from Instagram\nStatus: ${status}`
         }
         $scope.posts = children
-          .filter(child => child.data.preview)
+          .filter(child => child.data.images)
           .map(child => child.data)
       })
   }
