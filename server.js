@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 const bp = require('body-parser')
-const env = require('.env')
-const CLIENT_ID = env.CLIENT_ID
-const ACCESS_TOKEN = env.ACCESS_TOKEN
+const env = require('./.env')
+const CLIENT_ID = process.env.CLIENT_ID
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN
 
 let endpoint = `https://api.instagram.com/v1/users/${CLIENT_ID}/media/recent/?access_token=${ACCESS_TOKEN}`
 
